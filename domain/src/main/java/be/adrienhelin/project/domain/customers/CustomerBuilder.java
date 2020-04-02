@@ -1,9 +1,5 @@
 package be.adrienhelin.project.domain.customers;
 
-import be.adrienhelin.project.domain.orders.Order;
-
-import java.util.Collection;
-
 public class CustomerBuilder {
 
     private String firstName;

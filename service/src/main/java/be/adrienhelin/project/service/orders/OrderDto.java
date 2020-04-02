@@ -1,21 +1,20 @@
-package be.adrienhelin.project.domain.orders;
+package be.adrienhelin.project.service.orders;
 
 import be.adrienhelin.project.domain.customers.Customer;
 import be.adrienhelin.project.domain.items.ItemGroup;
 
 import java.util.List;
-import java.util.UUID;
 
-public class Order {
+public class OrderDto {
 
     private final Customer customer;
     private final String id;
     private final List<ItemGroup> orderList;
 
-    public Order(OrderBuilder orderBuilder) {
-        this.id = UUID.randomUUID().toString();
-        this.customer = orderBuilder.getCustomer();
-        this.orderList = orderBuilder.getOrderList();
+    public OrderDto(String id, Customer customer, List<ItemGroup> orderList) {
+        this.id = id;
+        this.customer = customer;
+        this.orderList = orderList;
     }
 
     public Customer getCustomer() {

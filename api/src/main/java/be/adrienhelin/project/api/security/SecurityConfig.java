@@ -2,6 +2,7 @@ package be.adrienhelin.project.api.security;
 
 import be.adrienhelin.project.api.controllers.CustomerController;
 import be.adrienhelin.project.api.controllers.ItemController;
+import be.adrienhelin.project.api.controllers.OrderController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(CustomerController.CUSTOMER_RESOURCE_PATH + "/**").permitAll()
                 .antMatchers(ItemController.ITEM_RESOURCE_PATH + "/**").permitAll()
+                .antMatchers(OrderController.ORDER_RESOURCE_PATH + "/**").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 .authenticationEntryPoint(authEntryPoint)

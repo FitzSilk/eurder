@@ -22,4 +22,8 @@ public class ItemRepository {
     public Collection<Item> getAllItems() {
         return itemRepository.values();
     }
+
+    public Item getItemById(String itemId) {
+        return itemRepository.get(itemId);
+    }
 }
