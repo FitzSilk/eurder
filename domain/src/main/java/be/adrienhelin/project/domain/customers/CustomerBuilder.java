@@ -3,16 +3,15 @@ package be.adrienhelin.project.domain.customers;
 import be.adrienhelin.project.domain.orders.Order;
 
 import java.util.Collection;
-import java.util.List;
 
 public class CustomerBuilder {
 
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private String phoneNumber;
     private Address address;
-    private Collection<Order> orderList;
 
     protected CustomerBuilder() {
     }
@@ -40,6 +39,11 @@ public class CustomerBuilder {
         return this;
     }
 
+    public CustomerBuilder withPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     public CustomerBuilder withPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
@@ -47,11 +51,6 @@ public class CustomerBuilder {
 
     public CustomerBuilder withAddress(Address address) {
         this.address = address;
-        return this;
-    }
-
-    public CustomerBuilder withOrders(List<Order> orderList) {
-        this.orderList = orderList;
         return this;
     }
 
@@ -75,7 +74,7 @@ public class CustomerBuilder {
         return address;
     }
 
-    public Collection<Order> getOrderList() {
-        return orderList;
+    public String getPassword() {
+        return password;
     }
 }

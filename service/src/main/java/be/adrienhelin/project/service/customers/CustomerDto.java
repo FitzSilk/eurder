@@ -1,26 +1,31 @@
 package be.adrienhelin.project.service.customers;
 
 import be.adrienhelin.project.domain.customers.Address;
-import be.adrienhelin.project.domain.orders.Order;
-
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerDto {
 
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private String phoneNumber;
     private Address address;
-    private List<Order> orderList;
 
-    public CustomerDto(String firstName, String lastName, String email, String phoneNumber, Address address, List<Order> orderList) {
+    @JsonCreator
+    public CustomerDto(@JsonProperty("firstName") String firstName,
+                       @JsonProperty("lastName") String lastName,
+                       @JsonProperty("email") String email,
+                       @JsonProperty("password") String password,
+                       @JsonProperty("phoneNumber") String phoneNumber,
+                       @JsonProperty("address") Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.orderList = orderList;
     }
 
     public String getFirstName() {
@@ -43,7 +48,7 @@ public class CustomerDto {
         return address;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
+    public String getPassword() {
+        return password;
     }
 }

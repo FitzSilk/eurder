@@ -32,8 +32,8 @@ public class CustomerController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public CustomerDto register(CustomerDto customerDto) {
-        customerLogger.info("Someone is registering.");
+    public CustomerDto register(@RequestBody CustomerDto customerDto) {
+        customerLogger.info("A new customer is registering.");
         return customerService.register(customerDto);
     }
 }

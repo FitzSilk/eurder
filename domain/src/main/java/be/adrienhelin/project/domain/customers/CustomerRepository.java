@@ -19,7 +19,8 @@ public class CustomerRepository {
     }
 
     public Customer register(Customer customer) {
-        return customerRepository.put(customer.getId(), customer);
+        customerRepository.put(customer.getId(), customer);
+        return customer;
     }
 
 }

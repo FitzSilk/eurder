@@ -1,7 +1,6 @@
 package be.adrienhelin.project.service.customers;
 
 import be.adrienhelin.project.domain.customers.Customer;
-import be.adrienhelin.project.domain.customers.CustomerBuilder;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -13,7 +12,12 @@ import static be.adrienhelin.project.domain.customers.CustomerBuilder.customerBu
 public class CustomerMapper {
 
     public CustomerDto toDto(Customer customer) {
-        return new CustomerDto(customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getPhoneNumber(), customer.getAddress(), customer.getOrderList());
+        return new CustomerDto(customer.getFirstName(),
+                customer.getLastName(),
+                customer.getEmail(),
+                customer.getPassword(),
+                customer.getPhoneNumber(),
+                customer.getAddress());
     }
 
     public Collection<CustomerDto> toDto(Collection<Customer> customerCollection) {
@@ -25,9 +29,9 @@ public class CustomerMapper {
                 .withFirstName(customerDto.getFirstName())
                 .withLastName(customerDto.getLastName())
                 .withEmail(customerDto.getEmail())
+                .withPassword(customerDto.getPassword())
                 .withPhoneNumber(customerDto.getPhoneNumber())
                 .withAddress(customerDto.getAddress())
-                .withOrders(customerDto.getOrderList())
                 .build();
     }
 }

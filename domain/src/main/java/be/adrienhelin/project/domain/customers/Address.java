@@ -1,5 +1,7 @@
 package be.adrienhelin.project.domain.customers;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public class Address {
 
     private final String street;
@@ -7,6 +9,7 @@ public class Address {
     private final String postalCode;
     private final String city;
 
+    @JsonCreator
     public Address(AddressBuilder addressBuilder) {
         street = addressBuilder.getStreet();
         streetNumber = addressBuilder.getStreetNumber();
