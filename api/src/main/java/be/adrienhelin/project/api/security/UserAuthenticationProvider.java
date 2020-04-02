@@ -1,4 +1,4 @@
-package be.adrienhelin.project.api.security.authentication;
+package be.adrienhelin.project.api.security;
 
 import be.adrienhelin.project.api.security.authentication.external.ExternalAuthentication;
 import be.adrienhelin.project.api.security.authentication.external.FakeAuthenticationService;

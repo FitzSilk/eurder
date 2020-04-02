@@ -1,6 +1,5 @@
-package be.adrienhelin.project.api.security;
+package be.adrienhelin.project.api.security.authentication;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -13,7 +12,6 @@ public class UserAuthenticationEntryPoint extends BasicAuthenticationEntryPoint 
 
     public static final String NAME_OF_REALM = "USERRealm";
 
-    @Autowired
     public UserAuthenticationEntryPoint() {
         setRealmName(NAME_OF_REALM);
     }
