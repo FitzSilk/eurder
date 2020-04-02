@@ -1,5 +1,10 @@
 package be.adrienhelin.project.domain.customers;
 
+import be.adrienhelin.project.domain.orders.Order;
+
+import java.util.Collection;
+import java.util.List;
+
 public class CustomerBuilder {
 
     private String firstName;
@@ -7,6 +12,7 @@ public class CustomerBuilder {
     private String email;
     private String phoneNumber;
     private Address address;
+    private Collection<Order> orderList;
 
     protected CustomerBuilder() {
     }
@@ -44,6 +50,11 @@ public class CustomerBuilder {
         return this;
     }
 
+    public CustomerBuilder withOrders(List<Order> orderList) {
+        this.orderList = orderList;
+        return this;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -62,5 +73,9 @@ public class CustomerBuilder {
 
     public Address getAddress() {
         return address;
+    }
+
+    public Collection<Order> getOrderList() {
+        return orderList;
     }
 }

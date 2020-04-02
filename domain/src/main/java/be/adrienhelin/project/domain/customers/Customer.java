@@ -49,4 +49,8 @@ public class Customer {
     public List<Order> getOrderList() {
         return orderList;
     }
+
+    public String getId() {
+        return id;
+    }
 }

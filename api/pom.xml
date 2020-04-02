@@ -13,8 +13,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>be.adrienhelin.project</groupId>
-            <artifactId>domain</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>be.adrienhelin.project</groupId>
