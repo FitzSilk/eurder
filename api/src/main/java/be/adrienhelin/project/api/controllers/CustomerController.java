@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = UserController.USER_RESOURCE_PATH)
-public class UserController {
+@RequestMapping(path = CustomerController.CUSTOMER_RESOURCE_PATH)
+public class CustomerController {
 
-    public static final String USER_RESOURCE_PATH = "/member";
+    public static final String CUSTOMER_RESOURCE_PATH = "/member";
 
     @Autowired
-    public UserController() {
+    public CustomerController() {
 
     }
 

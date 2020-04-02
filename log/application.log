@@ -50,3 +50,17 @@
 2020-04-02 10:04:57.715  INFO 7880 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-04-02 10:04:57.715  INFO 7880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-04-02 10:04:57.720  INFO 7880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-04-02 12:11:23.692  INFO 844 --- [main] b.a.project.application.Application      : Starting Application on WKS11918 with PID 844 (C:\_development\switchfully\eurder\jar\target\classes started by Adrien.Helin in C:\_development\switchfully\eurder)
+2020-04-02 12:11:23.695  INFO 844 --- [main] b.a.project.application.Application      : No active profile set, falling back to default profiles: default
+2020-04-02 12:11:24.344  INFO 844 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-02 12:11:24.350  INFO 844 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-02 12:11:24.350  INFO 844 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-02 12:11:24.409  INFO 844 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2020-04-02 12:11:24.409  INFO 844 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 687 ms
+2020-04-02 12:11:24.575  INFO 844 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@75de29c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@46963479, org.springframework.security.web.header.HeaderWriterFilter@895416d, org.springframework.security.web.authentication.logout.LogoutFilter@4f0f7849, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@70887727, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6dd1c3ed, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@654c7d2d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@fc807c1, org.springframework.security.web.session.SessionManagementFilter@5f7989fa, org.springframework.security.web.access.ExceptionTranslationFilter@2f5ac102, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@726aa968]
+2020-04-02 12:11:24.626  INFO 844 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-02 12:11:24.826  INFO 844 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2020-04-02 12:11:24.829  INFO 844 --- [main] b.a.project.application.Application      : Started Application in 1.507 seconds (JVM running for 2.487)
+2020-04-02 12:11:31.205  INFO 844 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-02 12:11:31.207  INFO 844 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-02 12:11:31.212  INFO 844 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
