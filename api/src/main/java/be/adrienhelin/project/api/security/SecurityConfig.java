@@ -1,9 +1,7 @@
 package be.adrienhelin.project.api.security;
 
-import be.adrienhelin.project.api.security.authentication.UserAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,12 +19,12 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationEntryPoint authEntryPoint;
-    private final AuthenticationProvider authenticationProvider;
+    private final UserAuthenticationProvider userAuthenticationProvider;
 
     @Autowired
-    public SecurityConfig(UserAuthenticationEntryPoint authEntryPoint, UserAuthenticationProvider authenticationProvider) {
+    public SecurityConfig(AuthenticationEntryPoint authEntryPoint, UserAuthenticationProvider userAuthenticationProvider) {
         this.authEntryPoint = authEntryPoint;
-        this.authenticationProvider = authenticationProvider;
+        this.userAuthenticationProvider = userAuthenticationProvider;
     }
 
     @Override
@@ -42,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authenticationProvider);
+        auth.authenticationProvider(userAuthenticationProvider);
     }
 
 }
