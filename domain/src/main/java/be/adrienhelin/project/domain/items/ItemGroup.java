@@ -1,19 +1,34 @@
 package be.adrienhelin.project.domain.items;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
+import com.fasterxml.jackson.databind.ser.std.StringSerializer;
+
 import java.time.LocalDate;
 
 public class ItemGroup {
 
-    private final String itemId;
     private final double amount;
     private final LocalDate shippingDate;
-    private final ItemRepository itemRepository;
+    @JsonDeserialize(using = StringDeserializer.class)
+    @JsonSerialize(using = StringSerializer.class)
+    public final String itemId;
 
-    public ItemGroup(String itemId, double amount, ItemRepository itemRepository) {
+    @JsonCreator
+    public ItemGroup(@JsonProperty("itemId") String itemId,
+                     @JsonProperty("amount") double amount) {
         this.itemId = itemId;
         this.amount = amount;
-        this.itemRepository = itemRepository;
-        if((itemRepository.getItemById(itemId)).getAmount() != 0) this.shippingDate = (LocalDate.now()).plusDays(1);
-        else this.shippingDate = (LocalDate.now()).plusDays(7);
+        /*if((itemRepository.getItemById(itemId)).getAmount() != 0) */
+        this.shippingDate = (LocalDate.now()).plusDays(1);
+        /*else this.shippingDate = (LocalDate.now()).plusDays(7);*/
     }
+
+    public String getItemId() {
+        return itemId;
+    }
+
 }

@@ -1,5 +1,6 @@
 package be.adrienhelin.project.api.controllers;
 
+import be.adrienhelin.project.service.customers.CreateCustomerDto;
 import be.adrienhelin.project.service.customers.CustomerDto;
 import be.adrienhelin.project.service.customers.CustomerService;
 import org.slf4j.Logger;
@@ -32,7 +33,7 @@ public class CustomerController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public CustomerDto register(@RequestBody CustomerDto customerDto) {
+    public CustomerDto register(@RequestBody CreateCustomerDto customerDto) {
         customerLogger.info("A new customer is registering.");
         return customerService.register(customerDto);
     }

@@ -18,7 +18,7 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDto addAnOrder(OrderDto orderDto) {
+    public OrderDto addAnOrder(CreateOrderDto orderDto) {
         return orderMapper.toDto(orderRepository.addAnOrder(orderMapper.toOrder(orderDto)));
     }
 

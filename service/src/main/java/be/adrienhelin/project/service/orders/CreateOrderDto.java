@@ -1,31 +1,28 @@
 package be.adrienhelin.project.service.orders;
 
-import be.adrienhelin.project.domain.customers.Customer;
 import be.adrienhelin.project.domain.items.ItemGroup;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class OrderDto {
+public class CreateOrderDto {
 
     private final String customerId;
-    private final String id;
     private final List<ItemGroup> orderList;
 
-    public OrderDto(String id, String customerId, List<ItemGroup> orderList) {
-        this.id = id;
+    @JsonCreator
+    public CreateOrderDto(@JsonProperty("customerId") String customerId,
+                          @JsonProperty("orderList") List<ItemGroup> orderList) {
         this.customerId = customerId;
         this.orderList = orderList;
     }
 
-    public String getId() {
-        return id;
+    public String getCustomerId() {
+        return customerId;
     }
 
     public List<ItemGroup> getOrderList() {
         return orderList;
-    }
-
-    public String getCustomerId() {
-        return customerId;
     }
 }

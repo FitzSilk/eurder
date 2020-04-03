@@ -12,7 +12,9 @@ import static be.adrienhelin.project.domain.customers.CustomerBuilder.customerBu
 public class CustomerMapper {
 
     public CustomerDto toDto(Customer customer) {
-        return new CustomerDto(customer.getFirstName(),
+        return new CustomerDto(
+                customer.getId(),
+                customer.getFirstName(),
                 customer.getLastName(),
                 customer.getEmail(),
                 customer.getPassword(),
@@ -25,6 +27,18 @@ public class CustomerMapper {
     }
 
     public Customer toCustomer(CustomerDto customerDto) {
+        return customerBuilder()
+                .withID(customerDto.getId())
+                .withFirstName(customerDto.getFirstName())
+                .withLastName(customerDto.getLastName())
+                .withEmail(customerDto.getEmail())
+                .withPassword(customerDto.getPassword())
+                .withPhoneNumber(customerDto.getPhoneNumber())
+                .withAddress(customerDto.getAddress())
+                .build();
+    }
+
+    public Customer toCustomer(CreateCustomerDto customerDto) {
         return customerBuilder()
                 .withFirstName(customerDto.getFirstName())
                 .withLastName(customerDto.getLastName())

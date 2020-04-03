@@ -1,8 +1,8 @@
 package be.adrienhelin.project.api.controllers;
 
+import be.adrienhelin.project.service.orders.CreateOrderDto;
 import be.adrienhelin.project.service.orders.OrderDto;
 import be.adrienhelin.project.service.orders.OrderService;
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -31,7 +31,7 @@ public class OrderController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderDto addAnOrder(@RequestBody OrderDto orderDto) {
+    public OrderDto addAnOrder(@RequestBody CreateOrderDto orderDto) {
         orderLogger.info("Someone is ordering something");
         return orderService.addAnOrder(orderDto);
     }

@@ -23,6 +23,7 @@ class CustomerDtoTest {
                 .withCity("Brussels")
                 .build();
         Customer customer = customerBuilder()
+                .withID("stuffId")
                 .withFirstName("John")
                 .withLastName("Doe")
                 .withEmail("john.doe@dead.com")
@@ -32,7 +33,7 @@ class CustomerDtoTest {
                 .build();
         //THEN
         CustomerDto actualResult = customerMapper.toDto(customer);
-        CustomerDto expectedResult = new CustomerDto("John", "Doe", "john.doe@dead.com", "DEAD", "555-1342-210", address);
+        CustomerDto expectedResult = new CustomerDto("stuffId","John", "Doe", "john.doe@dead.com", "DEAD", "555-1342-210", address);
         //THEN
         assertEquals(expectedResult.getFirstName(), actualResult.getFirstName());
         assertEquals(expectedResult.getLastName(), actualResult.getLastName());

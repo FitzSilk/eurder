@@ -12,7 +12,7 @@ import static be.adrienhelin.project.domain.orders.OrderBuilder.orderBuilder;
 public class OrderMapper {
 
     public OrderDto toDto(Order order) {
-        return new OrderDto(order.getId(), order.getCustomer(), order.getOrderList());
+        return new OrderDto(order.getId(), order.getCustomerId(), order.getOrderList());
     }
 
     public Collection<OrderDto> toDto(Collection<Order> orders) {
@@ -21,7 +21,14 @@ public class OrderMapper {
 
     public Order toOrder(OrderDto orderDto) {
         return orderBuilder()
-                .withCustomer(orderDto.getCustomer())
+                .withCustomerId(orderDto.getCustomerId())
+                .withOrderList(orderDto.getOrderList())
+                .build();
+    }
+
+    public Order toOrder(CreateOrderDto orderDto) {
+        return orderBuilder()
+                .withCustomerId(orderDto.getCustomerId())
                 .withOrderList(orderDto.getOrderList())
                 .build();
     }

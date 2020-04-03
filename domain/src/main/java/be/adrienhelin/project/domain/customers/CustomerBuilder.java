@@ -2,6 +2,7 @@ package be.adrienhelin.project.domain.customers;
 
 public class CustomerBuilder {
 
+    private String id;
     private String firstName;
     private String lastName;
     private String email;
@@ -18,6 +19,11 @@ public class CustomerBuilder {
 
     public Customer build() {
         return new Customer(this);
+    }
+
+    public CustomerBuilder withID(String id) {
+        this.id = id;
+        return this;
     }
 
     public CustomerBuilder withFirstName(String firstName) {
@@ -48,6 +54,10 @@ public class CustomerBuilder {
     public CustomerBuilder withAddress(Address address) {
         this.address = address;
         return this;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getFirstName() {

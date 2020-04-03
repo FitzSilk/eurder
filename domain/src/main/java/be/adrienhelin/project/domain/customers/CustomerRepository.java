@@ -18,6 +18,10 @@ public class CustomerRepository {
         return customerRepository.values();
     }
 
+    public Customer getCustomerById(String id) {
+        return customerRepository.get(id);
+    }
+
     public Customer register(Customer customer) {
         customerRepository.put(customer.getId(), customer);
         return customer;

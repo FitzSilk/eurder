@@ -8,18 +8,18 @@ import java.util.UUID;
 
 public class Order {
 
-    private final Customer customer;
+    private final String customerId;
     private final String id;
     private final List<ItemGroup> orderList;
 
     public Order(OrderBuilder orderBuilder) {
         this.id = UUID.randomUUID().toString();
-        this.customer = orderBuilder.getCustomer();
+        this.customerId = orderBuilder.getCustomerId();
         this.orderList = orderBuilder.getOrderList();
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomerId() {
+        return customerId;
     }
 
     public String getId() {

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class OrderBuilder {
 
-    private Customer customer;
+    private String customerId;
     private List<ItemGroup> orderList;
 
     protected OrderBuilder() {
@@ -21,8 +21,8 @@ public class OrderBuilder {
         return new Order(this);
     }
 
-    public OrderBuilder withCustomer(Customer customer) {
-        this.customer = customer;
+    public OrderBuilder withCustomerId(String customerId) {
+        this.customerId = customerId;
         return this;
     }
 
@@ -31,8 +31,8 @@ public class OrderBuilder {
         return this;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomerId() {
+        return customerId;
     }
 
     public List<ItemGroup> getOrderList() {
