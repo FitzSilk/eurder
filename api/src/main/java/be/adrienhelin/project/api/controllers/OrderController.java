@@ -1,7 +1,5 @@
 package be.adrienhelin.project.api.controllers;
 
-import be.adrienhelin.project.domain.customers.CustomerRepository;
-import be.adrienhelin.project.domain.items.ItemRepository;
 import be.adrienhelin.project.service.orders.CreateOrderDto;
 import be.adrienhelin.project.service.orders.OrderDto;
 import be.adrienhelin.project.service.orders.OrderService;
