@@ -2,6 +2,7 @@ package be.adrienhelin.project.domain.customers;
 
 import org.junit.jupiter.api.Test;
 
+import static be.adrienhelin.project.domain.customers.Customer.CustomerBuilder.customerBuilder;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerTest {
@@ -9,7 +10,7 @@ class CustomerTest {
     @Test
     void givenAVisitor_shouldBeAble_toRegister() {
         //GIVEN
-        Customer newCustomer = CustomerBuilder.customerBuilder()
+        Customer newCustomer = customerBuilder()
                 .withFirstName("John")
                 .withLastName("Doe")
                 .withEmail("john.doe@dead.com")

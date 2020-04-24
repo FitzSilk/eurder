@@ -1,13 +1,11 @@
 package be.adrienhelin.project.service.customers;
 
 import be.adrienhelin.project.domain.customers.Address;
-import be.adrienhelin.project.domain.customers.AddressBuilder;
 import be.adrienhelin.project.domain.customers.Customer;
-import be.adrienhelin.project.domain.customers.CustomerBuilder;
 import org.junit.jupiter.api.Test;
 
-import static be.adrienhelin.project.domain.customers.AddressBuilder.addressBuilder;
-import static be.adrienhelin.project.domain.customers.CustomerBuilder.customerBuilder;
+import static be.adrienhelin.project.domain.customers.Address.AddressBuilder.addressBuilder;
+import static be.adrienhelin.project.domain.customers.Customer.CustomerBuilder.customerBuilder;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerDtoTest {
@@ -23,7 +21,7 @@ class CustomerDtoTest {
                 .withCity("Brussels")
                 .build();
         Customer customer = customerBuilder()
-                .withID("stuffId")
+                .withID(13)
                 .withFirstName("John")
                 .withLastName("Doe")
                 .withEmail("john.doe@dead.com")
@@ -33,7 +31,7 @@ class CustomerDtoTest {
                 .build();
         //THEN
         CustomerDto actualResult = customerMapper.toDto(customer);
-        CustomerDto expectedResult = new CustomerDto("stuffId","John", "Doe", "john.doe@dead.com", "DEAD", "555-1342-210", address);
+        CustomerDto expectedResult = new CustomerDto(13,"John", "Doe", "john.doe@dead.com", "DEAD", "555-1342-210", address);
         //THEN
         assertEquals(expectedResult.getFirstName(), actualResult.getFirstName());
         assertEquals(expectedResult.getLastName(), actualResult.getLastName());

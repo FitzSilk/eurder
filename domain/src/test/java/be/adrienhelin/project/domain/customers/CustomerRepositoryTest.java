@@ -2,16 +2,23 @@ package be.adrienhelin.project.domain.customers;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import static be.adrienhelin.project.domain.customers.AddressBuilder.addressBuilder;
-import static be.adrienhelin.project.domain.customers.CustomerBuilder.customerBuilder;
+import static be.adrienhelin.project.domain.customers.Address.AddressBuilder.addressBuilder;
+import static be.adrienhelin.project.domain.customers.Customer.CustomerBuilder.customerBuilder;
 
 class CustomerRepositoryTest {
+
+    private final CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerRepositoryTest(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @Test
     void givenANewCustomer_shouldReturnIt_inRepository() {
         //GIVEN
-        CustomerRepository customerRepository = new CustomerRepository();
         Customer newCustomer = customerBuilder()
                 .withFirstName("Jeremy")
                 .withLastName("Jones")
@@ -25,9 +32,9 @@ class CustomerRepositoryTest {
                         .build())
                 .build();
         //WHEN
-        customerRepository.register(newCustomer);
+        customerRepository.save(newCustomer);
         //THEN
-        Assertions.assertTrue(customerRepository.getAllCustomers().contains(newCustomer));
+        Assertions.assertTrue(customerRepository.findAll().contains(newCustomer));
     }
 
 }

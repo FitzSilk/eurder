@@ -8,17 +8,17 @@ import java.util.List;
 
 public class CreateOrderDto {
 
-    private final String customerId;
+    private final Integer customerId;
     private final List<ItemGroup> orderList;
 
     @JsonCreator
-    public CreateOrderDto(@JsonProperty("customerId") String customerId,
+    public CreateOrderDto(@JsonProperty("customerId") Integer customerId,
                           @JsonProperty("orderList") List<ItemGroup> orderList) {
         this.customerId = customerId;
         this.orderList = orderList;
     }
 
-    public String getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 

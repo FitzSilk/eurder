@@ -25,13 +25,13 @@ public class OrderService {
     }
 
     public OrderDto addAnOrder(CreateOrderDto orderDto) {
-        if (customerRepository.getCustomerById(orderDto.getCustomerId()) == null) {
-            customerRepository.getCustomerById(orderDto.getCustomerId()).createOrder();
+        if (customerRepository.findById(orderDto.getCustomerId()) == null) {
+            //customerRepository.findById(orderDto.getCustomerId()).createOrder();
         }
-        return orderMapper.toDto(orderRepository.addAnOrder(orderMapper.toOrder(orderDto)));
+        return orderMapper.toDto(orderRepository.save(orderMapper.toOrder(orderDto)));
     }
 
     public Collection<OrderDto> getAllOrders() {
-        return orderMapper.toDto(orderRepository.getAllOrders());
+        return orderMapper.toDto(orderRepository.findAll());
     }
 }

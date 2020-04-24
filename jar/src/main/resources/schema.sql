@@ -27,8 +27,11 @@ create table if not  exists customer(
                                         first_name varchar(12) not null,
                                         last_name varchar(18) not null,
                                         email varchar(64) not null,
+                                        password varchar(16) not null,
                                         street_number varchar(4) not null,
                                         street_name varchar(32) not null,
+                                        zip_code varchar(6) not null,
+                                        city varchar(12) not null,
                                         phone_number varchar(16) not null
 );
 

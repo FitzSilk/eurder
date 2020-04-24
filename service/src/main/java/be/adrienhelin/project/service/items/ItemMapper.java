@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-import static be.adrienhelin.project.domain.items.ItemBuilder.itemBuilder;
+import static be.adrienhelin.project.domain.items.Item.ItemBuilder.itemBuilder;
 
 @Component
 public class ItemMapper {

@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-import static be.adrienhelin.project.domain.orders.OrderBuilder.orderBuilder;
+import static be.adrienhelin.project.domain.orders.Order.OrderBuilder.orderBuilder;
 
 @Component
 public class OrderMapper {
 
     public OrderDto toDto(Order order) {
-        return new OrderDto(order.getId(), order.getCustomerId(), order.getOrderList());
+        return new OrderDto(order.getId(), order.getCustomerId());
     }
 
     public Collection<OrderDto> toDto(Collection<Order> orders) {
@@ -22,7 +22,6 @@ public class OrderMapper {
     public Order toOrder(OrderDto orderDto) {
         return orderBuilder()
                 .withCustomerId(orderDto.getCustomerId())
-                .withOrderList(orderDto.getOrderList())
                 .build();
     }
 

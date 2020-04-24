@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class CustomerDto {
 
-    private String id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
@@ -14,7 +14,7 @@ public class CustomerDto {
     private Address address;
 
     @JsonCreator
-    public CustomerDto(String id, String firstName, String lastName, String email, String password, String phoneNumber, Address address) {
+    public CustomerDto(Integer id, String firstName, String lastName, String email, String password, String phoneNumber, Address address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,7 +24,7 @@ public class CustomerDto {
         this.address = address;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 

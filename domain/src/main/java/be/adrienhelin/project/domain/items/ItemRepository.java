@@ -1,29 +1,13 @@
 package be.adrienhelin.project.domain.items;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 @Repository
-public class ItemRepository {
+public interface ItemRepository extends CrudRepository<Item, Integer> {
 
-    private final ConcurrentHashMap<String, Item> itemRepository;
+    List<Item> findAll();
 
-    public ItemRepository() {
-        this.itemRepository = new ConcurrentHashMap<>();
-    }
-
-    public Item addAnItem(Item item) {
-        itemRepository.put(item.getId(), item);
-        return item;
-    }
-
-    public Collection<Item> getAllItems() {
-        return itemRepository.values();
-    }
-
-    public Item getItemById(String itemId) {
-        return itemRepository.get(itemId);
-    }
 }

@@ -2,13 +2,13 @@ package be.adrienhelin.project.service.items;
 
 public class ItemDto {
 
-    private String id;
+    private Integer id;
     private String name;
     private String description;
     private double price;
     private int amount;
 
-    public ItemDto(String id, String name, String description, double price, int amount) {
+    public ItemDto(Integer id, String name, String description, double price, int amount) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -16,7 +16,7 @@ public class ItemDto {
         this.amount = amount;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 

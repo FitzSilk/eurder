@@ -2,7 +2,7 @@ package be.adrienhelin.project.domain.items;
 
 import org.junit.jupiter.api.Test;
 
-import static be.adrienhelin.project.domain.items.ItemBuilder.itemBuilder;
+import static be.adrienhelin.project.domain.items.Item.ItemBuilder.itemBuilder;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ItemTest {

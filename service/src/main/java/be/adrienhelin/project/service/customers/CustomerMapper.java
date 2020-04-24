@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-import static be.adrienhelin.project.domain.customers.CustomerBuilder.customerBuilder;
+import static be.adrienhelin.project.domain.customers.Customer.CustomerBuilder.customerBuilder;
 
 @Component
 public class CustomerMapper {

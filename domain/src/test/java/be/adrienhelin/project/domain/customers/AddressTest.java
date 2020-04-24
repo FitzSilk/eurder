@@ -2,6 +2,7 @@ package be.adrienhelin.project.domain.customers;
 
 import org.junit.jupiter.api.Test;
 
+import static be.adrienhelin.project.domain.customers.Address.AddressBuilder.addressBuilder;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AddressTest {
@@ -9,7 +10,7 @@ class AddressTest {
     @Test
     void givenAnAddress_shouldReturn_trueValues() {
         //GIVEN
-        Address newAddress = AddressBuilder.addressBuilder()
+        Address newAddress = addressBuilder()
                 .withStreet("Helihavenlaan")
                 .withStreetNumber("22")
                 .withPostalCode("1000")

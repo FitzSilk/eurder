@@ -1,25 +1,13 @@
 package be.adrienhelin.project.domain.orders;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 @Repository
-public class OrderRepository {
+public interface OrderRepository extends CrudRepository<Order, Integer> {
 
-    private final ConcurrentHashMap<String, Order> orderRepository;
+    List<Order> findAll();
 
-    public OrderRepository() {
-        this.orderRepository = new ConcurrentHashMap<>();
-    }
-
-    public Collection<Order> getAllOrders() {
-        return orderRepository.values();
-    }
-
-    public Order addAnOrder(Order order) {
-        orderRepository.put(order.getId(), order);
-        return order;
-    }
 }

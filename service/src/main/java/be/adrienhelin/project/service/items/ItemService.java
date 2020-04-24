@@ -20,10 +20,10 @@ public class ItemService {
     }
 
     public ItemDto addAnItem(CreateItemDto itemDto) {
-        return itemMapper.toDto(itemRepository.addAnItem(itemMapper.toItem(itemDto)));
+        return itemMapper.toDto(itemRepository.save(itemMapper.toItem(itemDto)));
     }
 
     public Collection<ItemDto> getAllItems() {
-        return itemMapper.toDto(itemRepository.getAllItems());
+        return itemMapper.toDto(itemRepository.findAll());
     }
 }

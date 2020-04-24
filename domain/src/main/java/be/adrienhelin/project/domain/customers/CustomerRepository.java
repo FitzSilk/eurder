@@ -1,30 +1,13 @@
 package be.adrienhelin.project.domain.customers;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 @Repository
-public class CustomerRepository {
+public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
-    private final ConcurrentHashMap<String, Customer> customerRepository;
-
-    public CustomerRepository() {
-        this.customerRepository = new ConcurrentHashMap<>();
-    }
-
-    public Collection<Customer> getAllCustomers() {
-        return customerRepository.values();
-    }
-
-    public Customer getCustomerById(String id) {
-        return customerRepository.get(id);
-    }
-
-    public Customer register(Customer customer) {
-        customerRepository.put(customer.getId(), customer);
-        return customer;
-    }
+    List<Customer> findAll();
 
 }
