@@ -26,8 +26,7 @@ public class ItemGroup {
                      @JsonProperty("amount") int amount) {
         this.itemId = itemId;
         this.amount = amount;
-        /*if((itemRepository.getItemById(itemId)).getAmount() != 0) */
-        this.shippingDate = (LocalDate.now()).plusDays(1);
+       /* if ((itemRepository.getItemById(itemId)).getAmount() != 0) */this.shippingDate = (LocalDate.now()).plusDays(1);
         /*else this.shippingDate = (LocalDate.now()).plusDays(7);*/
     }
 

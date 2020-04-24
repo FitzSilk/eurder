@@ -1,10 +1,13 @@
 package be.adrienhelin.project.api.controllers;
 
+import be.adrienhelin.project.domain.customers.CustomerRepository;
+import be.adrienhelin.project.domain.items.ItemRepository;
 import be.adrienhelin.project.service.orders.CreateOrderDto;
 import be.adrienhelin.project.service.orders.OrderDto;
 import be.adrienhelin.project.service.orders.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,7 @@ public class OrderController {
     private final Logger orderLogger = LoggerFactory.getLogger(OrderController.class);
     private OrderService orderService;
 
+    @Autowired
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
