@@ -17,7 +17,7 @@ public class OrderController {
 
     public static final String ORDER_RESOURCE_PATH = "/order";
     private final Logger orderLogger = LoggerFactory.getLogger(OrderController.class);
-    private OrderService orderService;
+    private final OrderService orderService;
 
     @Autowired
     public OrderController(OrderService orderService) {
@@ -33,7 +33,8 @@ public class OrderController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderDto addAnOrder(@RequestBody CreateOrderDto orderDto) {
+    public OrderDto addAnOrder(
+            @RequestBody OrderDto orderDto) {
         orderLogger.info("Someone is ordering something");
         return orderService.addAnOrder(orderDto);
     }

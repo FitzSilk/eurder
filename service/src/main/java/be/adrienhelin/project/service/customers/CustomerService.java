@@ -20,7 +20,7 @@ public class CustomerService {
         this.customerMapper = customerMapper;
     }
 
-    public CustomerDto register(CreateCustomerDto customerDto) {
+    public CustomerDto register(CustomerDto customerDto) {
         return customerMapper.toDto(customerRepository.save(customerMapper.toCustomer(customerDto)));
     }
 

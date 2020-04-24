@@ -1,37 +1,43 @@
 package be.adrienhelin.project.domain.items;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StringSerializer;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Table
+@Entity
 public class ItemGroup {
 
-    private final int amount;
-    @JsonDeserialize(using = StringDeserializer.class)
-    @JsonSerialize(using = StringSerializer.class)
-    private final String itemId;
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private final LocalDate shippingDate;
+    @Id
+    @Column(name = "item_group_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer itemGroupId;
 
-    @JsonCreator
-    public ItemGroup(@JsonProperty("itemId") String itemId,
-                     @JsonProperty("amount") int amount) {
-        this.itemId = itemId;
-        this.amount = amount;
-       /* if ((itemRepository.getItemById(itemId)).getAmount() != 0) */this.shippingDate = (LocalDate.now()).plusDays(1);
-        /*else this.shippingDate = (LocalDate.now()).plusDays(7);*/
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
+
+    @Column(name = "item_amount")
+    private int amount;
+
+    @Column(name = "shipping_date")
+    private LocalDate shippingDate;
+
+    public ItemGroup() {
     }
 
-    public String getItemId() {
-        return itemId;
+    public ItemGroup(Integer itemGroupId, Item item, int amount) {
+        this.itemGroupId = itemGroupId;
+        this.item = item;
+        this.amount = amount;
+        this.shippingDate = (LocalDate.now()).plusDays(1);
+    }
+
+    public Integer getItemGroupId() {
+        return itemGroupId;
+    }
+
+    public Item getItem() {
+        return item;
     }
 
     public int getAmount() {

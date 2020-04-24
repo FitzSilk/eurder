@@ -1,6 +1,7 @@
 package be.adrienhelin.project.domain.items;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Table
 @Entity
@@ -53,8 +54,23 @@ public class Item {
         return id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Double.compare(item.price, price) == 0 &&
+                Objects.equals(name, item.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price);
+    }
+
     public static class ItemBuilder {
 
+        private Integer id;
         private String name;
         private String description;
         private double price;
@@ -91,6 +107,11 @@ public class Item {
             return this;
         }
 
+        public ItemBuilder withId(Integer id) {
+            this.id = id;
+            return this;
+        }
+
         public String getName() {
             return name;
         }
@@ -105,6 +126,10 @@ public class Item {
 
         public int getAmount() {
             return amount;
+        }
+
+        public Integer getId() {
+            return id;
         }
     }
 

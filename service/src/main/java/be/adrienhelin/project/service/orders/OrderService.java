@@ -24,10 +24,7 @@ public class OrderService {
         this.itemRepository = itemRepository;
     }
 
-    public OrderDto addAnOrder(CreateOrderDto orderDto) {
-        if (customerRepository.findById(orderDto.getCustomerId()) == null) {
-            //customerRepository.findById(orderDto.getCustomerId()).createOrder();
-        }
+    public OrderDto addAnOrder(OrderDto orderDto) {
         return orderMapper.toDto(orderRepository.save(orderMapper.toOrder(orderDto)));
     }
 

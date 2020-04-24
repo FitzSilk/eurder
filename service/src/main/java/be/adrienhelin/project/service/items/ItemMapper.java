@@ -21,6 +21,7 @@ public class ItemMapper {
 
     public Item toItem(ItemDto itemDto) {
         return itemBuilder()
+                .withId(itemDto.getId())
                 .withName(itemDto.getName())
                 .withDescription(itemDto.getDescription())
                 .withPrice(itemDto.getPrice())
@@ -28,12 +29,4 @@ public class ItemMapper {
                 .build();
     }
 
-    public Item toItem(CreateItemDto itemDto) {
-        return itemBuilder()
-                .withName(itemDto.getName())
-                .withDescription(itemDto.getDescription())
-                .withPrice(itemDto.getPrice())
-                .withAmount(itemDto.getAmount())
-                .build();
-    }
 }

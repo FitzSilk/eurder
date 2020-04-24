@@ -1,21 +1,21 @@
 package be.adrienhelin.project.service.orders;
 
-import be.adrienhelin.project.domain.items.ItemGroup;
-
-import java.util.List;
-
 public class OrderDto {
 
-    private final Integer customerId;
-    private final Integer id;
+    private Integer orderId;
+    private Integer customerId;
 
-    public OrderDto(Integer id, Integer customerId) {
-        this.id = id;
+    public OrderDto(Integer customerId) {
         this.customerId = customerId;
     }
 
-    public Integer getId() {
-        return id;
+    public OrderDto(Integer orderId, Integer customerId) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
     }
 
     public Integer getCustomerId() {
