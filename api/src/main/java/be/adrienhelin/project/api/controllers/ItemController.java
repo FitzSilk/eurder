@@ -25,9 +25,18 @@ public class ItemController {
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public Collection<ItemDto> getAllCustomers() {
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Collection<ItemDto> getAllItems() {
         itemLogger.info("Someone is checking the data here.");
         return itemService.getAllItems();
+    }
+
+    @GetMapping(path = "/{id}", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ItemDto getItemById(@PathVariable Integer id) {
+        itemLogger.info("Someone is checking the data here.");
+        return itemService.getItemById(id);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")

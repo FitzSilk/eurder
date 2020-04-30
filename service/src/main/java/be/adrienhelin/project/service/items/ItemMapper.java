@@ -12,7 +12,7 @@ import static be.adrienhelin.project.domain.items.Item.ItemBuilder.itemBuilder;
 public class ItemMapper {
 
     public ItemDto toDto(Item item) {
-        return new ItemDto(item.getId(), item.getName(), item.getDescription(), item.getPrice(), item.getAmount());
+        return new ItemDto(item.getId(), item.getName(), item.getDescription(), item.getPrice(), item.getAmount(), item.getCoverLink());
     }
 
     public Collection<ItemDto> toDto(Collection<Item> items) {
@@ -26,6 +26,7 @@ public class ItemMapper {
                 .withDescription(itemDto.getDescription())
                 .withPrice(itemDto.getPrice())
                 .withAmount(itemDto.getAmount())
+                .withCoverLink(itemDto.getCoverLink())
                 .build();
     }
 

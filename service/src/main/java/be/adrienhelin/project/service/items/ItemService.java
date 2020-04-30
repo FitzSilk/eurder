@@ -37,4 +37,10 @@ public class ItemService {
                 .findFirst();
         return sameItem.isPresent();
     }
+
+    public ItemDto getItemById(Integer id) {
+        Optional<Item> fetchItem = itemRepository.findById(id);
+        if(fetchItem.isEmpty()) throw new IllegalArgumentException("This item doesn't exists");
+        else return itemMapper.toDto(fetchItem.get());
+    }
 }

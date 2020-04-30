@@ -1,6 +1,5 @@
 package be.adrienhelin.project.api.controllers;
 
-import be.adrienhelin.project.service.orders.CreateOrderDto;
 import be.adrienhelin.project.service.orders.OrderDto;
 import be.adrienhelin.project.service.orders.OrderService;
 import org.slf4j.Logger;
