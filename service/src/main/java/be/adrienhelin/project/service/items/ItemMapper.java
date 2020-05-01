@@ -12,11 +12,21 @@ import static be.adrienhelin.project.domain.items.Item.ItemBuilder.itemBuilder;
 public class ItemMapper {
 
     public ItemDto toDto(Item item) {
-        return new ItemDto(item.getId(), item.getName(), item.getDescription(), item.getPrice(), item.getAmount(), item.getCoverLink());
+        return new ItemDto(
+                item.getId(),
+                item.getName(),
+                item.getDescription(),
+                item.getPrice(),
+                item.getAmount(),
+                item.getCoverLink()
+        );
     }
 
     public Collection<ItemDto> toDto(Collection<Item> items) {
-        return items.stream().map(this::toDto).collect(Collectors.toList());
+        return items.stream()
+                .map(this::toDto)
+                .collect(Collectors.toList()
+                );
     }
 
     public Item toItem(ItemDto itemDto) {

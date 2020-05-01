@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.Optional;
 
+import static be.adrienhelin.project.domain.items.Item.ItemBuilder.itemBuilder;
+
 @Service
 public class ItemService {
 
@@ -40,7 +42,16 @@ public class ItemService {
 
     public ItemDto getItemById(Integer id) {
         Optional<Item> fetchItem = itemRepository.findById(id);
-        if(fetchItem.isEmpty()) throw new IllegalArgumentException("This item doesn't exists");
+        if (fetchItem.isEmpty()) throw new IllegalArgumentException("This item doesn't exists");
         else return itemMapper.toDto(fetchItem.get());
+    }
+
+    public ItemDto updateAnItem(Integer id, ItemDto itemDto) {
+        Optional<Item> fetchItem = itemRepository.findById(id);
+        if (fetchItem.isEmpty())
+            throw new IllegalArgumentException("This item doesn't exists and so can't be updated.");
+        else {
+            return itemMapper.toDto(itemRepository.save(itemMapper.toItem(itemDto)));
+        }
     }
 }

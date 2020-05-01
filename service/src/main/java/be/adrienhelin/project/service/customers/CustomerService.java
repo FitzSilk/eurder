@@ -2,7 +2,6 @@ package be.adrienhelin.project.service.customers;
 
 import be.adrienhelin.project.domain.customers.Customer;
 import be.adrienhelin.project.domain.customers.CustomerRepository;
-import be.adrienhelin.project.service.items.ItemDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +32,8 @@ public class CustomerService {
 
     public CustomerDto getCustomerById(Integer id) {
         Optional<Customer> fetchCustomer = customerRepository.findById(id);
-        if(fetchCustomer.isEmpty()) throw new IllegalArgumentException("The id provided: " + id + " is not a valid id.");
+        if (fetchCustomer.isEmpty())
+            throw new IllegalArgumentException("The id provided: " + id + " is not a valid id.");
         return customerMapper.toDto(fetchCustomer.get());
     }
 }

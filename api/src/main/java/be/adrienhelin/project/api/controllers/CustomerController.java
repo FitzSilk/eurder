@@ -2,7 +2,6 @@ package be.adrienhelin.project.api.controllers;
 
 import be.adrienhelin.project.service.customers.CustomerDto;
 import be.adrienhelin.project.service.customers.CustomerService;
-import be.adrienhelin.project.service.items.ItemDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

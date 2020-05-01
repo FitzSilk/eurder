@@ -31,6 +31,7 @@ public class Item {
     }
 
     public Item(ItemBuilder itemBuilder) {
+        this.id = itemBuilder.getId();
         this.name = itemBuilder.getName();
         this.description = itemBuilder.getDescription();
         this.price = itemBuilder.getPrice();
@@ -67,13 +68,12 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return Double.compare(item.price, price) == 0 &&
-                Objects.equals(name, item.name);
+        return Objects.equals(id, item.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, price);
+        return Objects.hash(id);
     }
 
     public static class ItemBuilder {

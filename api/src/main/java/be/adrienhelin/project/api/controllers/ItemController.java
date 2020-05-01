@@ -27,7 +27,7 @@ public class ItemController {
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:4200")
     public Collection<ItemDto> getAllItems() {
-        itemLogger.info("Someone is checking the data here.");
+        itemLogger.info("getallItems");
         return itemService.getAllItems();
     }
 
@@ -35,15 +35,24 @@ public class ItemController {
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:4200")
     public ItemDto getItemById(@PathVariable Integer id) {
-        itemLogger.info("Someone is checking the data here.");
+        itemLogger.info("getItemById");
         return itemService.getItemById(id);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
+    @CrossOrigin(origins = "http://localhost:4200")
     public ItemDto addAnItem(@RequestBody ItemDto itemDto) {
         itemLogger.info("Adding a new item");
         return itemService.addAnItem(itemDto);
+    }
+
+    @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ItemDto updateAnItem(@PathVariable Integer id, @RequestBody ItemDto itemDto) {
+        itemLogger.info("Tryin' to update item: " + id);
+        return itemService.updateAnItem(id, itemDto);
     }
 
 }
