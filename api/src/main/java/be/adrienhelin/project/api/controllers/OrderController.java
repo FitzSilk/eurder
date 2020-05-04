@@ -26,9 +26,9 @@ public class OrderController {
     @GetMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:4200")
-    public Collection<OrderDto> getAllOrders(@PathVariable Integer id) {
-        orderLogger.info("getAllOrders");
-        return orderService.getAllOrders(id);
+    public Collection<OrderDto> getAllOrdersFromUser(@PathVariable Integer id) {
+        orderLogger.info("getAllOrders from customer: " + id);
+        return orderService.getAllOrdersFromCustomer(id);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")

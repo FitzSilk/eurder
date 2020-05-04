@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -22,7 +23,12 @@ public class OrderService {
         return orderMapper.toDto(orderRepository.save(orderMapper.toOrder(orderDto)));
     }
 
-    public Collection<OrderDto> getAllOrders(Integer id) {
-        return orderMapper.toDto(orderRepository.findAllById(id));
+    public Collection<OrderDto> getAllOrdersFromCustomer(Integer id) {
+        return orderMapper.toDto(
+                (orderRepository.findAll())
+                        .stream()
+                        .filter(order -> order.getCustomerId().getId() == 1)
+                        .collect(Collectors.toList())
+        );
     }
 }

@@ -10,6 +10,4 @@ public interface OrderRepository extends CrudRepository<Order, Integer> {
 
     List<Order> findAll();
 
-    List<Order> findAllById(Integer id);
-
 }
