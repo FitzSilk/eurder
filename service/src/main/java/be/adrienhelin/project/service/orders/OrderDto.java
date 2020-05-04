@@ -1,5 +1,6 @@
 package be.adrienhelin.project.service.orders;
 
+import be.adrienhelin.project.domain.customers.Customer;
 import be.adrienhelin.project.domain.items.ItemGroup;
 
 import java.util.List;
@@ -7,14 +8,14 @@ import java.util.List;
 public class OrderDto {
 
     private Integer orderId;
-    private Integer customerId;
+    private Customer customerId;
     private List<ItemGroup> itemGroup;
 
     public OrderDto() {
 
     }
 
-    public OrderDto(Integer orderId, Integer customerId, List<ItemGroup> itemGroup) {
+    public OrderDto(Integer orderId, Customer customerId, List<ItemGroup> itemGroup) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.itemGroup = itemGroup;
@@ -24,11 +25,12 @@ public class OrderDto {
         return orderId;
     }
 
-    public Integer getCustomerId() {
+    public Customer getCustomerId() {
         return customerId;
     }
 
     public List<ItemGroup> getItemGroup() {
         return itemGroup;
     }
+
 }

@@ -12,6 +12,10 @@ public class ItemDto {
     public ItemDto() {
     }
 
+    public ItemDto(Integer id) {
+        this.id = id;
+    }
+
     public ItemDto(String name, String description, double price, int amount, String visualLink) {
         this.name = name;
         this.description = description;

@@ -21,7 +21,9 @@ public class OrderMapper {
 
     public Order toOrder(OrderDto orderDto) {
         return orderBuilder()
+                .withOrderId(orderDto.getOrderId())
                 .withCustomerId(orderDto.getCustomerId())
+                .withItemGroup(orderDto.getItemGroup())
                 .build();
     }
 }

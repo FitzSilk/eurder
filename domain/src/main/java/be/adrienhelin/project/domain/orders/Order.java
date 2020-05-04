@@ -1,24 +1,26 @@
 package be.adrienhelin.project.domain.orders;
 
+import be.adrienhelin.project.domain.customers.Customer;
 import be.adrienhelin.project.domain.items.ItemGroup;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Table
 @Entity
+@Table(name = "eurder")
 public class Order {
 
     @Id
-    @Column(name = "order_id")
+    @Column(name = "eurder_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Integer customerId;
+    private Customer customerId;
 
-    @OneToMany
-    @JoinColumn(name = "item_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "eurder_id")
     private List<ItemGroup> itemGroup;
 
     public Order() {
@@ -27,9 +29,10 @@ public class Order {
     public Order(OrderBuilder orderBuilder) {
         this.id = orderBuilder.getOrderId();
         this.customerId = orderBuilder.getCustomerId();
+        this.itemGroup = orderBuilder.getItemGroup();
     }
 
-    public Integer getCustomerId() {
+    public Customer getCustomerId() {
         return customerId;
     }
 
@@ -43,9 +46,9 @@ public class Order {
 
     public static class OrderBuilder {
 
-        private Integer customerId;
         private Integer orderId;
-        private List<ItemGroup> orderList;
+        private Customer customerId;
+        private List<ItemGroup> itemGroup;
 
         protected OrderBuilder() {
         }
@@ -58,7 +61,7 @@ public class Order {
             return new Order(this);
         }
 
-        public OrderBuilder withCustomerId(Integer customerId) {
+        public OrderBuilder withCustomerId(Customer customerId) {
             this.customerId = customerId;
             return this;
         }
@@ -68,12 +71,12 @@ public class Order {
             return this;
         }
 
-        public OrderBuilder withOrderList(List<ItemGroup> orderList) {
-            this.orderList = orderList;
+        public OrderBuilder withItemGroup(List<ItemGroup> itemGroup) {
+            this.itemGroup = itemGroup;
             return this;
         }
 
-        public Integer getCustomerId() {
+        public Customer getCustomerId() {
             return customerId;
         }
 
@@ -81,8 +84,8 @@ public class Order {
             return orderId;
         }
 
-        public List<ItemGroup> getOrderList() {
-            return orderList;
+        public List<ItemGroup> getItemGroup() {
+            return itemGroup;
         }
     }
 }

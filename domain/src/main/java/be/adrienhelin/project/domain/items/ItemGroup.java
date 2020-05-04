@@ -1,18 +1,28 @@
 package be.adrienhelin.project.domain.items;
 
-import io.swagger.models.auth.In;
+import be.adrienhelin.project.domain.orders.Order;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Table
 @Entity
+@Table(name = "item_group")
 public class ItemGroup {
 
     @Id
     @Column(name = "item_group_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer itemGroupId;
+
+    @ManyToOne
+    @JoinColumn(name = "eurder_id")
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "item_id")
@@ -22,16 +32,18 @@ public class ItemGroup {
     private int amount;
 
     @Column(name = "shipping_date")
-    private LocalDate shippingDate;
+    private String shippingDate;
 
     public ItemGroup() {
     }
 
+    @JsonCreator
     public ItemGroup(ItemGroupBuilder itemGroupBuilder) {
         this.itemGroupId = itemGroupBuilder.getItemGroupId();
+        this.order = itemGroupBuilder.getOrder();
         this.item = itemGroupBuilder.getItem();
         this.amount = itemGroupBuilder.getAmount();
-        this.shippingDate = (LocalDate.now()).plusDays(1);
+        this.shippingDate = itemGroupBuilder.getShippingDate();
     }
 
     public Integer getItemGroupId() {
@@ -42,11 +54,16 @@ public class ItemGroup {
         return item;
     }
 
+    @JsonIgnore
+    public Order getOrder() {
+        return order;
+    }
+
     public int getAmount() {
         return amount;
     }
 
-    public LocalDate getShippingDate() {
+    public String getShippingDate() {
         return shippingDate;
     }
 
@@ -55,7 +72,8 @@ public class ItemGroup {
         private Integer itemGroupId;
         private Item item;
         private Integer amount;
-        private LocalDate shippingDate;
+        private String shippingDate;
+        private Order order;
 
         protected ItemGroupBuilder() {
         }
@@ -83,9 +101,18 @@ public class ItemGroup {
             return this;
         }
 
-        public ItemGroupBuilder withShippingDate(LocalDate shippingDate) {
+        public ItemGroupBuilder withShippingDate(String shippingDate) {
             this.shippingDate = shippingDate;
             return this;
+        }
+
+        public ItemGroupBuilder withOrder(Order order) {
+            this.order = order;
+            return this;
+        }
+
+        public Order getOrder() {
+            return order;
         }
 
         public Integer getItemGroupId() {
@@ -100,7 +127,7 @@ public class ItemGroup {
             return amount;
         }
 
-        public LocalDate getShippingDate() {
+        public String getShippingDate() {
             return shippingDate;
         }
     }
