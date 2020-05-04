@@ -28,7 +28,6 @@ class OrderServiceTest {
         ItemGroup itemGroup = new ItemGroup(item.getId(), item.getAmount());
         order.add(itemGroup);
         //WHEN
-        CreateOrderDto createOrderDto = new CreateOrderDto(customer.getId(), order);
         orderService.addAnOrder(createOrderDto);
         //THEN
         Assertions.assertFalse(orderRepository.getAllOrders().isEmpty());*/

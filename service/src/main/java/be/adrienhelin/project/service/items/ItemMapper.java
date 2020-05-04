@@ -18,7 +18,7 @@ public class ItemMapper {
                 item.getDescription(),
                 item.getPrice(),
                 item.getAmount(),
-                item.getCoverLink()
+                item.getVisualLink()
         );
     }
 
@@ -36,7 +36,7 @@ public class ItemMapper {
                 .withDescription(itemDto.getDescription())
                 .withPrice(itemDto.getPrice())
                 .withAmount(itemDto.getAmount())
-                .withCoverLink(itemDto.getCoverLink())
+                .withVisualLink(itemDto.getVisualLink())
                 .build();
     }
 

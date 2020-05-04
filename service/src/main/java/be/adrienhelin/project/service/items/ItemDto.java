@@ -7,26 +7,26 @@ public class ItemDto {
     private String description;
     private double price;
     private int amount;
-    private String coverLink;
+    private String visualLink;
 
     public ItemDto() {
     }
 
-    public ItemDto(String name, String description, double price, int amount, String coverLink) {
+    public ItemDto(String name, String description, double price, int amount, String visualLink) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.amount = amount;
-        this.coverLink = coverLink;
+        this.visualLink = visualLink;
     }
 
-    public ItemDto(Integer id, String name, String description, double price, int amount, String coverLink) {
+    public ItemDto(Integer id, String name, String description, double price, int amount, String visualLink) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.amount = amount;
-        this.coverLink = coverLink;
+        this.visualLink = visualLink;
     }
 
     public Integer getId() {
@@ -49,7 +49,7 @@ public class ItemDto {
         return amount;
     }
 
-    public String getCoverLink() {
-        return coverLink;
+    public String getVisualLink() {
+        return visualLink;
     }
 }

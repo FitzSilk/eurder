@@ -25,7 +25,7 @@ public class Item {
     private int amount;
 
     @Column(name = "item_link")
-    private String coverLink;
+    private String visualLink;
 
     public Item() {
     }
@@ -36,7 +36,7 @@ public class Item {
         this.description = itemBuilder.getDescription();
         this.price = itemBuilder.getPrice();
         this.amount = itemBuilder.getAmount();
-        this.coverLink = itemBuilder.getCoverLink();
+        this.visualLink = itemBuilder.getVisualLink();
     }
 
     public String getName() {
@@ -59,8 +59,8 @@ public class Item {
         return id;
     }
 
-    public String getCoverLink() {
-        return coverLink;
+    public String getVisualLink() {
+        return visualLink;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Item {
         private String description;
         private double price;
         private int amount;
-        private String coverLink;
+        private String visualLink;
 
         protected ItemBuilder() {
         }
@@ -121,8 +121,8 @@ public class Item {
             return this;
         }
 
-        public ItemBuilder withCoverLink(String link) {
-            this.coverLink = link;
+        public ItemBuilder withVisualLink(String link) {
+            this.visualLink = link;
             return this;
         }
 
@@ -146,8 +146,8 @@ public class Item {
             return id;
         }
 
-        public String getCoverLink() {
-            return coverLink;
+        public String getVisualLink() {
+            return visualLink;
         }
     }
 

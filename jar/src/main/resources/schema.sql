@@ -43,6 +43,8 @@ create table if not exists item_group
     item_id       int    not null,
     item_amount   int    not null DEFAULT 1,
     shipping_date date   not null,
+    eurder_id     int    not null,
+    foreign key (eurder_id) references eurder (eurder_id),
     foreign key (item_id) references item (item_id)
 );
 

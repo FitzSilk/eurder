@@ -25,16 +25,18 @@ public class OrderController {
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:4200")
     public Collection<OrderDto> getAllOrders() {
-        orderLogger.info("Returning all orders");
+        orderLogger.info("getAllOrders");
         return orderService.getAllOrders();
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
+    @CrossOrigin(origins = "http://localhost:4200")
     public OrderDto addAnOrder(
             @RequestBody OrderDto orderDto) {
-        orderLogger.info("Someone is ordering something");
+        orderLogger.info("addAnOrder");
         return orderService.addAnOrder(orderDto);
     }
 }

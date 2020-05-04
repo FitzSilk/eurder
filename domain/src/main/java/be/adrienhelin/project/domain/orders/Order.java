@@ -17,9 +17,9 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Integer customerId;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "item_id")
-    private ItemGroup itemGroup;
+    private List<ItemGroup> itemGroup;
 
     public Order() {
     }
@@ -35,6 +35,10 @@ public class Order {
 
     public Integer getId() {
         return id;
+    }
+
+    public List<ItemGroup> getItemGroup() {
+        return itemGroup;
     }
 
     public static class OrderBuilder {
@@ -75,6 +79,10 @@ public class Order {
 
         public Integer getOrderId() {
             return orderId;
+        }
+
+        public List<ItemGroup> getOrderList() {
+            return orderList;
         }
     }
 }
