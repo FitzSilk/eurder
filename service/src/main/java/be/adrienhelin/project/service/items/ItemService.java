@@ -5,10 +5,8 @@ import be.adrienhelin.project.domain.items.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Optional;
-
-import static be.adrienhelin.project.domain.items.Item.ItemBuilder.itemBuilder;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemService {
@@ -53,5 +51,11 @@ public class ItemService {
         else {
             return itemMapper.toDto(itemRepository.save(itemMapper.toItem(itemDto)));
         }
+    }
+
+    public Collection<ItemDto> getItemsStock() {
+        List<Item> allItems = itemRepository.findAll();
+        Collections.sort(allItems);
+        return itemMapper.toDto(allItems);
     }
 }

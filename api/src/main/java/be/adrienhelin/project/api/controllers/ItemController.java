@@ -55,4 +55,12 @@ public class ItemController {
         return itemService.updateAnItem(id, itemDto);
     }
 
+    @GetMapping(path = "/stock", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Collection<ItemDto> getItemsStock() {
+        itemLogger.info("getItemsStock");
+        return itemService.getItemsStock();
+    }
+
 }

@@ -1,5 +1,7 @@
 package be.adrienhelin.project.service.items;
 
+import be.adrienhelin.project.domain.items.Stock;
+
 public class ItemDto {
 
     private Integer id;
@@ -8,6 +10,7 @@ public class ItemDto {
     private double price;
     private int amount;
     private String visualLink;
+    private Stock stock;
 
     public ItemDto() {
     }
@@ -22,6 +25,7 @@ public class ItemDto {
         this.price = price;
         this.amount = amount;
         this.visualLink = visualLink;
+        setStock();
     }
 
     public ItemDto(Integer id, String name, String description, double price, int amount, String visualLink) {
@@ -31,6 +35,13 @@ public class ItemDto {
         this.price = price;
         this.amount = amount;
         this.visualLink = visualLink;
+        setStock();
+    }
+
+    public void setStock() {
+        if (this.amount > 9) this.stock = Stock.HIGH;
+        else if (this.amount > 4) this.stock = Stock.MEDIUM;
+        else this.stock = Stock.LOW;
     }
 
     public Integer getId() {
@@ -55,5 +66,10 @@ public class ItemDto {
 
     public String getVisualLink() {
         return visualLink;
+    }
+
+    public Stock getStock() {
+        setStock();
+        return stock;
     }
 }

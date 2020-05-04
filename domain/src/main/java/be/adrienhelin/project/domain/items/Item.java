@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Table
 @Entity
-public class Item {
+public class Item implements Comparable<Item> {
 
     @Id
     @Column(name = "item_id")
@@ -27,6 +27,9 @@ public class Item {
     @Column(name = "item_link")
     private String visualLink;
 
+    @Transient
+    private Stock stock;
+
     public Item() {
     }
 
@@ -37,6 +40,13 @@ public class Item {
         this.price = itemBuilder.getPrice();
         this.amount = itemBuilder.getAmount();
         this.visualLink = itemBuilder.getVisualLink();
+        setStock();
+    }
+
+    private void setStock() {
+        if (this.amount > 9) this.stock = Stock.HIGH;
+        else if (this.amount > 4) this.stock = Stock.MEDIUM;
+        else this.stock = Stock.LOW;
     }
 
     public String getName() {
@@ -63,6 +73,11 @@ public class Item {
         return visualLink;
     }
 
+    public Stock getStock() {
+        setStock();
+        return stock;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,6 +91,11 @@ public class Item {
         return Objects.hash(id);
     }
 
+    @Override
+    public int compareTo(Item o) {
+        return this.getAmount() - o.getAmount();
+    }
+
     public static class ItemBuilder {
 
         private Integer id;
@@ -84,6 +104,7 @@ public class Item {
         private double price;
         private int amount;
         private String visualLink;
+        private Stock stock;
 
         protected ItemBuilder() {
         }
@@ -126,6 +147,11 @@ public class Item {
             return this;
         }
 
+        public ItemBuilder withStock(Stock stock) {
+            this.stock = stock;
+            return this;
+        }
+
         public String getName() {
             return name;
         }
@@ -148,6 +174,10 @@ public class Item {
 
         public String getVisualLink() {
             return visualLink;
+        }
+
+        public Stock getStock() {
+            return stock;
         }
     }
 
