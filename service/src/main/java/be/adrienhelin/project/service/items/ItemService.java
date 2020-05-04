@@ -58,4 +58,12 @@ public class ItemService {
         Collections.sort(allItems);
         return itemMapper.toDto(allItems);
     }
+
+    public Collection<ItemDto> getFilteredItemsStock(String filter) {
+        List<Item> allItems = itemRepository.findAll()
+                .stream()
+                .filter(itemDto -> itemDto.getStock().toString().equals(filter.toUpperCase()))
+                .collect(Collectors.toList());
+        return itemMapper.toDto(allItems);
+    }
 }

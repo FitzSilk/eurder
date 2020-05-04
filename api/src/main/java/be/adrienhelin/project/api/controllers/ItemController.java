@@ -63,4 +63,12 @@ public class ItemController {
         return itemService.getItemsStock();
     }
 
+    @GetMapping(path = "/stock/{filter}", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Collection<ItemDto> getFilteredItemsStock(@PathVariable String filter) {
+        itemLogger.info("getFilteredItemsStock");
+        return itemService.getFilteredItemsStock(filter);
+    }
+
 }
