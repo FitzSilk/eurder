@@ -27,7 +27,7 @@ public class OrderService {
         return orderMapper.toDto(
                 (orderRepository.findAll())
                         .stream()
-                        .filter(order -> order.getCustomerId().getId() == 1)
+                        .filter(order -> order.getCustomerId().getId().equals(id))
                         .collect(Collectors.toList())
         );
     }
