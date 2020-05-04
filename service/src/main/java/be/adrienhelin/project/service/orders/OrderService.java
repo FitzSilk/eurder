@@ -22,7 +22,7 @@ public class OrderService {
         return orderMapper.toDto(orderRepository.save(orderMapper.toOrder(orderDto)));
     }
 
-    public Collection<OrderDto> getAllOrders() {
-        return orderMapper.toDto(orderRepository.findAll());
+    public Collection<OrderDto> getAllOrders(Integer id) {
+        return orderMapper.toDto(orderRepository.findAllById(id));
     }
 }

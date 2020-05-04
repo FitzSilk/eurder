@@ -23,12 +23,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping(produces = "application/json")
+    @GetMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:4200")
-    public Collection<OrderDto> getAllOrders() {
+    public Collection<OrderDto> getAllOrders(@PathVariable Integer id) {
         orderLogger.info("getAllOrders");
-        return orderService.getAllOrders();
+        return orderService.getAllOrders(id);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
