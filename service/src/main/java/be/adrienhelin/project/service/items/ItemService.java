@@ -69,4 +69,8 @@ public class ItemService {
                 .collect(Collectors.toList());
         return itemMapper.toDto(allItems);
     }
+
+    public void deleteAnItem(Integer id) {
+        itemRepository.deleteById(id);
+    }
 }

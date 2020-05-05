@@ -55,6 +55,14 @@ public class ItemController {
         return itemService.updateAnItem(id, itemDto);
     }
 
+    @DeleteMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void deleteAnItem(@PathVariable Integer id) {
+        itemLogger.info("Tryin' to delete item: " + id);
+        itemService.deleteAnItem(id);
+    }
+
     @GetMapping(path = "/stock", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:4200")
