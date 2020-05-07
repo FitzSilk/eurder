@@ -3,8 +3,8 @@ package be.adrienhelin.project.domain.items;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Table
-@Entity(name = "item")
+@Entity
+@Table(name = "item")
 public class Item implements Comparable<Item> {
 
     @Id
@@ -182,3 +182,4 @@ public class Item implements Comparable<Item> {
     }
 
 }
+
