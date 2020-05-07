@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
+@CrossOrigin(origins = "https://eurder-angular-front-end.herokuapp.com")
 @RequestMapping(path = OrderController.ORDER_RESOURCE_PATH)
 public class OrderController {
 
@@ -25,7 +26,6 @@ public class OrderController {
 
     @GetMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    @CrossOrigin(origins = "http://localhost:4200")
     public Collection<OrderDto> getAllOrdersFromUser(@PathVariable Integer id) {
         orderLogger.info("getAllOrders from customer: " + id);
         return orderService.getAllOrdersFromCustomer(id);
@@ -33,7 +33,6 @@ public class OrderController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    @CrossOrigin(origins = "http://localhost:4200")
     public OrderDto addAnOrder(
             @RequestBody OrderDto orderDto) {
         orderLogger.info("addAnOrder");
