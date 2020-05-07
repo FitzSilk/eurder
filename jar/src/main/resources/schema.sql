@@ -21,7 +21,7 @@ create table if not exists item
     item_description varchar(120)  not null,
     item_price       numeric(5, 2) not null,
     item_amount      int           not null,
-    item_visualLink  varchar       not null
+    item_link        varchar       not null
 );
 
 create table if not exists customer
