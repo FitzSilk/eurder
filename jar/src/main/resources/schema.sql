@@ -10,9 +10,9 @@ begin;
 -- -- END UNCOMMENT
 -- --**************
 
-create schema if not exists eurder;
+create schema if not exists eeurder;
 
-set schema 'eurder';
+set schema 'eeurder';
 
 create table if not exists item
 (
@@ -59,3 +59,5 @@ create table if not exists eurder
 -- rollback;
 
 commit;
+
+
