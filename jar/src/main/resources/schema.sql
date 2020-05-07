@@ -3,9 +3,9 @@ begin;
 -- -- UNCOMMENT THESE LINES TO RESET THIS DB
 -- --***************************************
 
---set schema 'eurder';
---drop table if exists item, customer, eurder cascade;
---drop schema eurder;
+set schema 'eeurder';
+drop table if exists item, customer, eeurder cascade;
+drop schema eeurder;
 
 -- -- END UNCOMMENT
 -- --**************
@@ -37,6 +37,13 @@ create table if not exists customer
     phone_number  varchar(16) not null
 );
 
+create table if not exists eurder
+(
+    eurder_id   serial not null primary key,
+    total_price int,
+    customer_id int    not null,
+    foreign key (customer_id) references customer (customer_id)
+);
 create table if not exists item_group
 (
     item_group_id serial not null primary key,
@@ -48,13 +55,6 @@ create table if not exists item_group
     foreign key (item_id) references item (item_id)
 );
 
-create table if not exists eurder
-(
-    eurder_id   serial not null primary key,
-    total_price int,
-    customer_id int    not null,
-    foreign key (customer_id) references customer (customer_id)
-);
 
 -- rollback;
 
