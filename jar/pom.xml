@@ -11,10 +11,10 @@
 
     <artifactId>jar</artifactId>
 
-    <properties>
+<!--    <properties>
         <maven.compiler.target>13</maven.compiler.target>
         <maven.compiler.source>13</maven.compiler.source>
-    </properties>
+    </properties>-->
 
     <dependencies>
         <dependency>
