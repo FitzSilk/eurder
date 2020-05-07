@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Table
-@Entity
+@Entity(name = "item")
 public class Item implements Comparable<Item> {
 
     @Id
