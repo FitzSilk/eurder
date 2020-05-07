@@ -3,9 +3,9 @@ begin;
 -- -- UNCOMMENT THESE LINES TO RESET THIS DB
 -- --***************************************
 
-set schema 'eeurder';
-drop table if exists item, customer, eeurder cascade;
-drop schema eeurder;
+--set schema 'eeurder';
+--drop table if exists item, customer, eurder, item_group cascade;
+--drop schema eeurder;
 
 -- -- END UNCOMMENT
 -- --**************
@@ -20,7 +20,8 @@ create table if not exists item
     item_name        varchar(60)   not null,
     item_description varchar(120)  not null,
     item_price       numeric(5, 2) not null,
-    item_amount      int           not null
+    item_amount      int           not null,
+    item_visualLink  varchar       not null
 );
 
 create table if not exists customer
@@ -56,7 +57,7 @@ create table if not exists item_group
 );
 
 
--- rollback;
+--rollback;
 
 commit;
 
